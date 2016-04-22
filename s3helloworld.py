@@ -16,4 +16,8 @@ if not s3.Bucket(BUCKET_NAME) in s3.buckets.all():
 else:
 	print('Bucket ' + BUCKET_NAME + 'already exists!')
 
+print('Storing a file to S3 bucket')
+
+s3.Object(BUCKET_NAME, 'readme.txt').put(Body=open('./README.md', 'rb'))
+
 
