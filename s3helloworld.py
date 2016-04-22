@@ -20,4 +20,15 @@ print('Storing a file to S3 bucket')
 
 s3.Object(BUCKET_NAME, 'readme.txt').put(Body=open('./README.md', 'rb'))
 
+print('Iterate through bucket keys and delete them')
+for key in s3.Bucket(BUCKET_NAME).objects.all():
+    print(key.key)
+    key.delete()
+
+print('Deleting bucket: ' + BUCKET_NAME)
+s3.Bucket(BUCKET_NAME).delete()
+
+
+
+
 
